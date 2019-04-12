@@ -7,12 +7,16 @@ int main(void) {
 
     int widest = 5;
     int min = core - widest + 1;
-    for (int i = 0; i <= widest; i++) {
+    for (int i = 0; i < widest; i++) {
         for (int j = i; j < widest; j++) {
             printf(" ");
         }
-        for (int k = 0; k < i; k++) {
+        int k;
+        for (k = 0; k < i; k++) {
             printf("%c", min + k);
+        }
+        for (; k >= 0; k--) {
+          printf("%c", min + k);
         }
         printf("\n");
     }
