@@ -4,9 +4,7 @@
 #define LOWER -10000000L
 
 long get_long(void);
-
-bool bad_limits(long low, long high, long start, long end);
-
+bool bad_limits(long start, long end);
 double sum_squares(long a, long b);
 
 int main(void) {
@@ -20,7 +18,7 @@ int main(void) {
   stop = get_long();
 
   while (start != 0 || stop != 0) {
-    if (bad_limits(LOWER, UPPER, start, stop)) {
+    if (bad_limits(start, stop)) {
       printf("Please try again.\n");
     } else {
       answer = sum_squares(start, stop);
@@ -55,17 +53,17 @@ double sum_squares(long a, long b) {
   return total;
 }
 
-bool bad_limits(long low, long high, long start, long end) {
+bool bad_limits(long start, long end) {
   if (start > end) {
     printf("%ld isn't smaller than %ld\n", start, end);
     return true;
   }
-  if (start < low || end < low) {
-    printf("Values must be %ld or higher\n", low);
+  if (start < LOWER || end < LOWER) {
+    printf("Values must be %ld or higher\n", LOWER);
     return true;
   }
-  if (start > high || end > high) {
-    printf("Vakues must be %ld or lower\n", high);
+  if (start > UPPER || end > UPPER) {
+    printf("Vakues must be %ld or lower\n", UPPER);
   }
   return false;
 }
