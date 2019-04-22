@@ -67,7 +67,7 @@ bool bad_limits(long start, long end) {
     return true;
   }
   if (start > UPPER || end > UPPER) {
-    printf("Vakues must be %ld or lower\n", UPPER);
+    printf("Values must be %ld or lower\n", UPPER);
   }
   return false;
 }
