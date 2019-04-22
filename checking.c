@@ -6,16 +6,14 @@
 long get_long(void);
 bool bad_limits(long start, long end);
 double sum_squares(long a, long b);
+void ask_for_limits(long* start, long* stop);
 
 int main(void) {
   long start;
   long stop;
   double answer;
 
-  printf("Lower limit: ");
-  start = get_long();
-  printf("Upper limit: ");
-  stop = get_long();
+  ask_for_limits(&start, &stop);
 
   while (start != 0 || stop != 0) {
     if (bad_limits(start, stop)) {
@@ -24,13 +22,19 @@ int main(void) {
       answer = sum_squares(start, stop);
       printf("Sum of squares is %g\n", answer);
     }
-    printf("Go again. Lower limit: ");
-    start = get_long();
-    printf("Upper limit: ");
-    stop = get_long();
+    printf("Go again.\n");
+    ask_for_limits(&start, &stop);
   }
   printf("Done\n");
 }
+
+void ask_for_limits(long *start, long *stop) {
+  printf("Lower limit: ");
+  *start = get_long();
+  printf("Upper limit: ");
+  *stop = get_long();
+}
+
 
 long get_long(void) {
   long input;
