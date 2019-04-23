@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "get_input.h"
 
 double min(double x, double y);
 void chline(char ch, int start, int length);
@@ -6,10 +7,21 @@ void chrow(char ch, int length, int rows);
 double hm(int a, int b);
 
 int main(void) {
-    printf("Lesser is %f\n", min(5.0, 8.0));
-    chline('+', 5, 40);
-    chrow('*', 25, 4);
-    printf("Harmonic mean of %d and %d is obviously: %f\n", 5, 7, hm(5, 7));
+    double da = get_double();
+    double db = get_double();
+    printf("Lesser is %f\n", min(da, db));
+    char ch = get_char();
+    int ct1 = get_int();
+    int ct2 = get_int();
+    chline(ch, ct1, ct2);
+    ch = get_char();
+    ct1 = get_int();
+    ct2 = get_int();
+    chrow(ch, ct1, ct2);
+    ct1 = get_int();
+    ct2 = get_int();
+    chrow(ch, ct1, ct2);
+    printf("Harmonic mean of %d and %d is obviously: %f\n", ct1, ct2, hm(ct1, ct2));
     return 0;
 }
 
