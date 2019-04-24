@@ -7,6 +7,8 @@ void chrow(char ch, int length, int rows);
 double hm(int a, int b);
 
 int main(void) {
+    char *str = get_string();
+    printf("Hey we got a string. %s\n", str);
     double da = get_double();
     double db = get_double();
     printf("Lesser is %f\n", min(da, db));

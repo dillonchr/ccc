@@ -5,6 +5,20 @@
 void wait_til_newline(void);
 void enter_prompt(char *type_name, bool is_retry);
 
+char *get_string(void) {
+    char n[256];
+    static char r[256];
+    int i = 0;
+    while (1) {
+        enter_prompt("string", i++);
+        fgets(n, 256, stdin);
+        if (sscanf(n, "%s", r) == 1) {
+            break;
+        }
+    }
+    return r;
+}
+
 int get_int(void) {
     int r;
     enter_prompt("integer", false);
@@ -36,11 +50,15 @@ char get_char(void) {
 
 double get_double(void) {
     double r;
-    enter_prompt("double", false);
-    while(scanf("%lf", &r) != 1) {
-        enter_prompt("double", true);
+    char n[256];
+    int i = 0;
+    while (1) {
+        enter_prompt("double", i++);
+        fgets(n, 256, stdin);
+        if (sscanf(n, "%lf", &r) == 1) {
+            break;
+        }
     }
-    wait_til_newline();
     return r;
 }
 
