@@ -7,16 +7,21 @@ void enter_prompt(char *type_name, bool is_retry);
 
 char *get_string(void) {
     char n[256];
-    static char r[256];
+    static char *r;
     int i = 0;
-    while (1) {
-        enter_prompt("string", i++);
-        fgets(n, 256, stdin);
-        if (sscanf(n, "%s", r) == 1) {
-            break;
-        }
+    enter_prompt("string", false);
+    r = fgets(n, 256, stdin);
+    if (r) {
+      while (n[i] != '\n' && n[i] != '\0') {
+        i++;
+      }
+      if (n[i] == '\n') {
+        n[i] = '\0';
+      } else {
+        wait_til_newline();
+      }
     }
-    return r;
+  return r;
 }
 
 int get_int(void) {
