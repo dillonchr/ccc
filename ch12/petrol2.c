@@ -21,5 +21,6 @@ void get_info(void) {
 
 void show_info(void) {
     register double mpg = (double) distance / consumption;
+    cons_units[strlen(cons_units) - 2] = '\0';
     printf("Fuel consumption is %0.2f %s per %s\n", mpg, cons_units, dist_units);
 }
